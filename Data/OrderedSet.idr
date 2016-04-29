@@ -25,3 +25,6 @@ isElem x (FromVect xs) = isElem x xs
 
 toVect : OrderedSet n a -> Vect n a
 toVect (FromVect xs) = xs
+
+map : {f : a -> b} -> Injective f -> OrderedSet n a -> OrderedSet n b
+map inj (FromVect xs {p}) {f} = FromVect (map f xs) {p = mapInjectiveFunction inj p}
